@@ -1,8 +1,17 @@
-<div *ngFor="let message of messages">
+<!-- <div *ngFor="let message of messages">
   {{message}}
 </div>
 
 <input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
 <button (click)="sendMessage()">Send</button>
 
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
+<header class="default-background header">
+  <p class="section-content">DACM26 Chat</p>
+</header>
+<div id="content">
+  <router-outlet></router-outlet>
+</div>
+<footer class="default-background footer">
+  <p class="section-content">Jobsity</p>
+</footer>

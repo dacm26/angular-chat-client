@@ -1,0 +1,38 @@
+<mat-card class="card">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="form">
+        <mat-form-field class="full-width">
+            <input matInput formControlName="username" placeholder="Username" (keyup.enter)="login()">
+            <mat-error *ngIf="loginForm.get('password').hasError('required')">
+                This is a required field
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput type="password" formControlName="password" placeholder="Password" (keyup.enter)="login()">
+            <mat-error *ngIf="loginForm.get('password').hasError('required')">
+                This is a required field
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('password').hasError('minlength')">
+                Passwords must be at least 6 characters in length
+            </mat-error>
+        </mat-form-field>
+        <div>
+            <button mat-raised-button
+                style="margin-left: 30%;"
+                type="submit"
+                color="basic"
+                (click)="login()"
+                [disabled]="!loginForm.valid">
+                Login
+            </button>
+            <button  mat-raised-button
+                style="margin-left: 5%;"
+                color="primary"
+                (click)="login()">
+                Sign Up
+            </button>
+            <mat-error *ngIf="error.length > 0">
+                {{ error }}
+            </mat-error>
+        </div>
+    </form>
+</mat-card>
