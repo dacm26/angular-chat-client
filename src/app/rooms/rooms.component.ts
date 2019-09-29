@@ -48,6 +48,10 @@ export class RoomsComponent implements OnInit {
       }
     });
   }
+  
+  onChat(room: any) {
+    this.router.navigate(['/chat'], { state: room });
+  }
 
   private getRooms() {
     const conditions = {
@@ -55,7 +59,7 @@ export class RoomsComponent implements OnInit {
     };
     this.roomService.findAll(`?where=${JSON.stringify(conditions)}&sort=["name"]&pageSize=1000`).subscribe(response => {
       if (isArray(get(response, 'data.data'))) {
-        this.rooms = get(response, 'data.data');
+        this.rooms = get(response, 'data.data') || [];
         this.pages = get(response, 'data.totalPages');
       }
     });

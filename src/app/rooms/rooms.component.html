@@ -9,7 +9,7 @@
             <h3 mat-subheader>Rooms</h3>
             <mat-list-item *ngFor="let room of rooms">
                 <mat-icon mat-list-icon>chat</mat-icon>
-                <h4 mat-line>{{room.name}}</h4>
+                <h4 mat-line (click)="onChat(room)" class="item">{{room.name}}</h4>
                 <p mat-line> {{room.createdAt | date}} </p>
             </mat-list-item>
     </mat-list>

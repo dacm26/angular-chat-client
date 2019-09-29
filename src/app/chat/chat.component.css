@@ -1,0 +1,18 @@
+#chat {
+  height: 100%;
+  margin-top: 10%;
+}
+
+.list {
+  height: 100%;
+  overflow: auto;
+  height: 750px;
+}
+
+.right {
+  text-align: right;
+}
+
+.align-right {
+  vertical-align: right;
+}

@@ -10,13 +10,13 @@ export class ChatService {
     }
 
     public sendMessage(message) {
-        this.socket.emit('msgToServer', message);
+        this.socket.emit('msgToServer', JSON.stringify(message));
     }
 
-    public getMessages = () => {
+    public getMessages = (roomId: string) => {
         return Observable.create((observer) => {
-            this.socket.on('msgToClient', (message) => {
-                observer.next(message + ' de que u');
+            this.socket.on('msgToClient', (post) => {
+                observer.next(JSON.parse(post));
             });
         });
     }

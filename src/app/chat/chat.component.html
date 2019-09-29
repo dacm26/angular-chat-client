@@ -1,0 +1,27 @@
+<mat-card class="card" id="chat">
+    <mat-list class="list">
+            <h3 mat-subheader>{{ room.name | titlecase }}</h3>
+            <mat-list-item *ngFor="let post of posts">
+                <mat-icon *ngIf="post.userId !== currentUser._id" mat-list-icon>person_pin</mat-icon>
+                <h4 [ngClass]="{'right': post.userId === currentUser._id}" mat-line>{{ post.content }}</h4>
+                <p [ngClass]="{'right': post.userId === currentUser._id}" mat-line> {{ post.userId !== currentUser._id ? post.user.username : 'me' }}</p>
+                <p [ngClass]="{'right': post.userId === currentUser._id}" mat-line> {{ post.createdAt | date:'short' }} </p>
+                <mat-icon *ngIf="post.userId === currentUser._id">perm_identity</mat-icon>
+            </mat-list-item>
+    </mat-list>
+    <form layout layout-align="center" [formGroup]="chatForm" (ngSubmit)="sendMessage()" class="form" layout-padding>
+        <div layout="row">
+            <mat-form-field class="full-width" style="width: 80%;">
+                <input matInput formControlName="message" placeholder="Type Here...">
+            </mat-form-field>
+            <button mat-raised-button
+                style="margin-left: 1%;"
+                type="submit"
+                color="primary"
+                (click)="sendMessage()"
+                [disabled]="!chatForm.valid">
+                Send
+            </button>
+        </div>
+    </form>
+</mat-card>
