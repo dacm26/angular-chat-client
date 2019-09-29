@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
           duration: 3500,
         });
       } else {
-        // redirect to chat
+        this.router.navigate(['/rooms']);
         this.snackbar.open('Welcome!', '', {
           duration: 3500,
         });

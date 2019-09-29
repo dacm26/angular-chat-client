@@ -1,0 +1,16 @@
+<mat-card class="card" id="room">
+    <button
+        mat-raised-button
+        color="primary"
+        (click)="onCreate()">
+        Create Room
+    </button>
+    <mat-list class="list">
+            <h3 mat-subheader>Rooms</h3>
+            <mat-list-item *ngFor="let room of rooms">
+                <mat-icon mat-list-icon>chat</mat-icon>
+                <h4 mat-line>{{room.name}}</h4>
+                <p mat-line> {{room.createdAt | date}} </p>
+            </mat-list-item>
+    </mat-list>
+</mat-card>

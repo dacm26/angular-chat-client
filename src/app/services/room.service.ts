@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
+import { isString } from 'lodash';
+
 import { environment } from '../../environments/environment';
 
 
@@ -13,14 +16,21 @@ let httpOptions = {
 };
 
 @Injectable()
-export class UserService {
-    private users = `${environment.apiUrl}/users`;
+export class RoomService {
+    private rooms = `${environment.apiUrl}/rooms`;
     constructor(private http: HttpClient) {
     }
 
-    public signUp(data: object): Observable<any> {
-        return this.http.post(this.users, data, httpOptions).pipe(
-            catchError(this.handleError<any>(`users: ${this.users}`))
+    public create(data: object): Observable<any> {
+        return this.http.post(this.rooms, data, httpOptions).pipe(
+            catchError(this.handleError<any>(`rooms: ${this.rooms}`))
+        );
+    }
+
+    public findAll(queryParams?: string): Observable<any> {
+        const url = this.rooms + (isString(queryParams) ? queryParams : '');
+        return this.http.get(url, httpOptions).pipe(
+            catchError(this.handleError<any>(`rooms: ${url}`))
         );
     }
 

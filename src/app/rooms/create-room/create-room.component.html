@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>
+    <form [formGroup]="roomForm" class="form">
+        <mat-form-field>
+            <input formControlName="name" matInput [(ngModel)]="data.room.name" placeholder="Name">
+            <mat-error *ngIf="roomForm.get('name').hasError('required')">
+                This is a required field
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="description" [(ngModel)]="data.room.description" placeholder="Description">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+	<button mat-button [disabled]="!roomForm.valid" [mat-dialog-close]="data.room" tabindex="2">Save</button>
+	<button mat-button (click)="onCancel()" tabindex="-1">Cancel</button>
+</div>

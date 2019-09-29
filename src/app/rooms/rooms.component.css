@@ -1,0 +1,9 @@
+#room {
+    height: 100%;
+    margin-top: 10%;
+}
+
+.list {
+    height: 100%;
+    overflow: auto;
+}
