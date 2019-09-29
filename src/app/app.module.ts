@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthService, ChatService } from './services';
+import { AuthService, ChatService, UserService } from './services';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,12 +15,14 @@ import {
   MatSnackBarModule,
   MatDividerModule,
 } from '@angular/material';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     HttpClientModule,
@@ -38,7 +40,8 @@ import {
   ],
   providers: [
     AuthService,
-    ChatService
+    ChatService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

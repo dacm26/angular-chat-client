@@ -8,11 +8,10 @@ import { AuthService } from '../services';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css', '../app.component.css']
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  error: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,18 +28,26 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.error = '';
     this.authService.login(this.getCredentials(), (error, response) => {
       console.log({
         error,
         response
       });
       if (error) {
-        this.error = error.error
+        this.snackbar.open(error.error, '', {
+          duration: 3500,
+        });
       } else {
         // redirect to chat
+        this.snackbar.open('Welcome!', '', {
+          duration: 3500,
+        });
       }
     });
+  }
+
+  signUp() {
+    this.router.navigate(['/sign-up']);
   }
 
   private getCredentials(): Object {

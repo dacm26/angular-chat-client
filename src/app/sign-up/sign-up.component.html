@@ -1,0 +1,53 @@
+<mat-card class="card" id="sign-up">
+    <form [formGroup]="signUpForm" (ngSubmit)="signUp()" class="form">
+        <mat-form-field class="full-width">
+            <input matInput formControlName="firstName" placeholder="First Name">
+            <mat-error *ngIf="signUpForm.get('firstName').hasError('required')">
+                This is a required field
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput formControlName="lastName" placeholder="Last Name">
+            <mat-error *ngIf="signUpForm.get('lastName').hasError('required')">
+                This is a required field
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput type="number" formControlName="age" placeholder="Age">
+            <mat-error *ngIf="signUpForm.get('age').hasError('required')">
+                This is a required field
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput formControlName="username" placeholder="Username">
+            <mat-error *ngIf="signUpForm.get('password').hasError('required')">
+                This is a required field
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput type="password" formControlName="password" placeholder="Password">
+            <mat-error *ngIf="signUpForm.get('password').hasError('required')">
+                This is a required field
+            </mat-error>
+            <mat-error *ngIf="signUpForm.get('password').hasError('minlength')">
+                Passwords must be at least 6 characters in length
+            </mat-error>
+        </mat-form-field>
+        <div>
+            <button mat-raised-button
+                style="margin-left: 30%;"
+                type="submit"
+                color="primary"
+                (click)="signUp()"
+                [disabled]="!signUpForm.valid">
+                Sign Up
+            </button>
+            <button mat-raised-button
+                style="margin-left: 5%;"
+                color="basic"
+                (click)="goBackToLogin()">
+                Go Back To Login
+            </button>
+        </div>
+    </form>
+</mat-card>

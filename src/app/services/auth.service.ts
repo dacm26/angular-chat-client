@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import * as jwt_decode from 'jwt-decode';
-import { isString, indexOf, isNil } from 'lodash';
+import { isString } from 'lodash';
 
 import { environment } from '../../environments/environment';
 

@@ -27,12 +27,9 @@
             <button  mat-raised-button
                 style="margin-left: 5%;"
                 color="primary"
-                (click)="login()">
+                (click)="signUp()">
                 Sign Up
             </button>
-            <mat-error *ngIf="error.length > 0">
-                {{ error }}
-            </mat-error>
         </div>
     </form>
 </mat-card>
