@@ -48,6 +48,10 @@ export class RoomsComponent implements OnInit {
       }
     });
   }
+
+  onRefresh() {
+    this.getRooms();
+  }
   
   onChat(room: any) {
     this.router.navigate(['/chat'], { state: room });

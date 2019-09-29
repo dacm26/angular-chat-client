@@ -22,6 +22,14 @@
                 [disabled]="!chatForm.valid">
                 Send
             </button>
+            <button
+                mat-raised-button
+                style="margin-left: 30%;"
+                color="primary"
+                (click)="onGoBack()">
+                <mat-icon mat-list-icon>arrow_back</mat-icon>
+                Go Back to Rooms
+            </button>
         </div>
     </form>
 </mat-card>

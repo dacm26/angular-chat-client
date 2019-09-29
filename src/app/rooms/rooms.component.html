@@ -5,6 +5,14 @@
         (click)="onCreate()">
         Create Room
     </button>
+    <button
+        mat-raised-button
+        color="basic"
+        style="float: right;"
+        (click)="onRefresh()">
+        <mat-icon mat-list-icon>refresh</mat-icon>
+        Refresh
+    </button>
     <mat-list class="list">
             <h3 mat-subheader>Rooms</h3>
             <mat-list-item *ngFor="let room of rooms">

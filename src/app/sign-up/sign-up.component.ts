@@ -33,11 +33,7 @@ export class SignUpComponent implements OnInit {
 
   signUp() {
     this.userService.signUp(this.getData()).subscribe((response) => {
-      if (!response) {
-        this.snackbar.open('Username already taken', '', {
-          duration: 3500,
-        });
-      } else {
+      if (response) {
         this.snackbar.open('Sign up complete', '', {
           duration: 3500,
         });

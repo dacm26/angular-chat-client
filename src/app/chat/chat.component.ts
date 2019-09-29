@@ -25,23 +25,26 @@ export class ChatComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getRoom();
-    this.currentUser = this.authService.getUser();
-    this.chatForm = this.formBuilder.group({
-      'message': ['', Validators.required],
-    });
-    this.getPosts();
-    this.addPostFromServer();
+    const continueWithCalls = this.getRoom();
+    if (continueWithCalls) {
+      this.currentUser = this.authService.getUser();
+      this.chatForm = this.formBuilder.group({
+        'message': ['', Validators.required],
+      });
+      this.getPosts();
+      this.addPostFromServer();
+    } else {
+      this.onGoBack();
+    }
   }
 
-  getRoom() {
+  onGoBack() {
+    this.router.navigate(['/rooms']);
+  }
+
+  getRoom(): boolean {
     this.room = window.history.state;
-    console.log({
-      room: this.room,
-    });
-    if (!isString(this.room._id)) {
-      this.router.navigate(['/rooms']);
-    }
+    return isString(this.room._id)
   }
 
   sendMessage() {
@@ -52,9 +55,6 @@ export class ChatComponent implements OnInit {
       roomId: this.room._id,
       content: message,
     };
-    console.log({
-      post
-    });
     this.chatService.sendMessage(post);
   }
 
