@@ -62,10 +62,12 @@ export class ChatComponent implements OnInit {
     this.chatService
       .getMessages(this.room._id)
       .subscribe(post => {
-        if (this.posts.length === 50) {
-          this.posts.shift();
+        if (post.roomId === this.room._id) {
+          if (this.posts.length === 50) {
+            this.posts.shift();
+          }
+          this.posts.push(post);
         }
-        this.posts.push(post);
       });
   }
 
