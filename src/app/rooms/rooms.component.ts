@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RoomService } from '../services';
+import { RoomService, AuthService } from '../services';
 import { Router } from '@angular/router';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { get, isArray, isNil } from 'lodash';
@@ -20,10 +20,17 @@ export class RoomsComponent implements OnInit {
     private router: Router,
     private dialog: MatDialog,
     private snackbar: MatSnackBar,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.getRooms();
+  }
+
+  onSignOut() {
+    this.authService.logout().subscribe(response => {
+      this.router.navigate(['/login']);
+    });
   }
 
   onCreate() {

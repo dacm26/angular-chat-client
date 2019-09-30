@@ -44,9 +44,8 @@ export class AuthService {
         );
     }
 
-    public logout(token: string = ''): Observable<any> {
+    public logout(): Observable<any> {
         let options = httpOptions;
-        options.headers.append('Authorization', token);
         return this.http.post(this.logoutURL, null, options).pipe(
             catchError(this.handleError<any>('logout'))
         );
