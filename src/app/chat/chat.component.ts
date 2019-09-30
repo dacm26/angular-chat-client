@@ -79,9 +79,6 @@ export class ChatComponent implements OnInit {
     const queryParams = `?where=${JSON.stringify(conditions)}&sort=["-createdAt"]&pageSize=50&populate=true`;
     this.postService.findAll(queryParams).subscribe(response => {
       if (isArray(get(response, 'data.data'))) {
-        console.log({
-          response
-        });
         this.posts = get(response, 'data.data') || [];
         this.posts = this.posts.reverse();
       }
